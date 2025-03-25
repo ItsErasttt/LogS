@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log S Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Предсказание Log S для химических соединений 🧪</h1>
+
+        <!-- Поиск молекул через PubChem -->
+        <div class="pubchem-search">
+            <p>Найдите молекулу по названию или CID:</p>
+            <input type="text" id="pubchem-input" placeholder="Введите название или CID">
+            <button id="pubchem-search-button">Поиск</button>
+        </div>
+
+        <!-- Ввод SMILES-строк -->
+        <p>Введите список SMILES-строк (каждая строка на новой строке):</p>
+        <textarea id="smiles-input" placeholder="CC(=O)OC1=CC=CC=C1C(=O)O\nCCO"></textarea>
+        <button id="predict-button">Предсказать Log S</button>
+
+        <!-- Загрузка CSV -->
+        <div class="csv-upload">
+            <p>Загрузите CSV-файл с SMILES-строками:</p>
+            <input type="file" id="csv-input" accept=".csv">
+            <button id="upload-button">Загрузить и проанализировать</button>
+        </div>
+
+        <!-- Строка прогресса -->
+        <div id="progress-bar-container" style="display: none; margin-top: 20px;">
+            <p id="progress-text">Обработано: 0%</p>
+            <div id="progress-bar" style="width: 100%; height: 20px; background-color: #ddd; border-radius: 10px;">
+                <div id="progress-fill" style="width: 0%; height: 100%; background-color: #007bff; border-radius: 10px;"></div>
+            </div>
+        </div>
+
+        <!-- Кнопки для экспорта -->
+        <div id="export-buttons" style="margin-top: 20px; display: none;">
+            <button id="export-csv">Сохранить как CSV</button>
+        </div>
+
+        <!-- Результаты -->
+        <div id="results"></div>
+
+        <!-- Спиннер загрузки -->
+        <div id="loading-spinner" class="spinner-container" style="display: none;">
+            <div class="spinner"></div>
+            <p>Загрузка...</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

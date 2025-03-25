@@ -1,0 +1,282 @@
+/* Общие стили */
+:root {
+    --light-bg: #f5f5f5;
+    --dark-bg: #121212;
+    --light-text: #333;
+    --dark-text: #ffffff;
+    --toggle-light: #ffdf7e; /* Цвет для светлой темы */
+    --toggle-dark: #4b5a7d; /* Цвет для темной темы */
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--light-text);
+    margin: 0;
+    padding: 20px;
+    transition: background-color 0.3s, color 0.3s; /* Плавный переход при смене темы */
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s; /* Плавный переход при смене темы */
+}
+
+h1 {
+    text-align: center;
+    transition: color 0.3s; /* Плавный переход при смене темы */
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical; /* Разрешаем изменять высоту */
+    transition: background-color 0.3s, color 0.3s; /* Плавный переход при смене темы */
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background-color 0.3s; /* Плавный переход при смене темы */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Стиль для блока результатов */
+#results {
+    margin-top: 20px;
+    word-wrap: break-word; /* Перенос текста в результатах */
+    white-space: pre-wrap; /* Сохранение переносов строк */
+    overflow-wrap: anywhere; /* Принудительный перенос */
+}
+
+.molecule {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    max-width: 100%; /* Ограничение ширины контейнера */
+    overflow-x: auto; /* Горизонтальная прокрутка */
+    transition: background-color 0.3s, border-color 0.3s; /* Плавный переход при смене темы */
+}
+
+.molecule img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Цветовое выделение для logS */
+.prediction-high {
+    color: green;
+    font-weight: bold;
+}
+
+.prediction-medium {
+    color: orange;
+    font-weight: bold;
+}
+
+.prediction-low {
+    color: red;
+    font-weight: bold;
+}
+
+/* Темная тема */
+body.dark-theme {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+body.dark-theme .container {
+    background-color: var(--dark-bg);
+    border: 1px solid #333;
+}
+
+body.dark-theme button {
+    background-color: #3b82f6;
+}
+
+body.dark-theme button:hover {
+    background-color: #2563eb;
+}
+
+body.dark-theme textarea {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+    border-color: #444;
+}
+
+/* Стили для переключателя темы */
+.theme-switcher-container {
+    margin-top: 20px;
+    text-align: center; /* Центрируем переключатель */
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    background-color: var(--toggle-dark);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.toggle-switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.icon {
+    position: absolute;
+    font-size: 20px;
+    line-height: 50px;
+    transition: opacity 0.3s;
+}
+
+.sun {
+    left: 10px;
+    opacity: 1;
+}
+
+.moon {
+    right: 10px;
+    opacity: 0;
+}
+
+input:checked ~ .slider {
+    transform: translateX(50px);
+    background-color: var(--toggle-light);
+}
+
+input:checked ~ .slider .sun {
+    opacity: 0;
+}
+
+input:checked ~ .slider .moon {
+    opacity: 1;
+}
+
+/* Стили для поиска через PubChem */
+.pubchem-search {
+    margin-bottom: 20px;
+}
+
+#pubchem-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#pubchem-search-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#pubchem-search-button:hover {
+    background-color: #218838;
+}
+
+/* Стили для спиннера */
+.spinner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #007bff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner-container p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--light-text);
+}
+
+/* Стили для строки прогресса */
+#progress-bar-container {
+    margin-top: 20px;
+}
+
+#progress-text {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+#progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#progress-fill {
+    height: 100%;
+    background-color: #007bff;
+    transition: width 0.3s ease;
+}
+
+/* Стили для кнопок экспорта */
+#export-buttons button {
+    margin-bottom: 10px;
+}
